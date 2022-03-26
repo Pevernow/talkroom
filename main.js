@@ -66,7 +66,11 @@ function login(name){
 }
 
 function sendMessage(message){
-    gConversation.send(new TextMessage(message));
+    gConversation.send(new AV.TextMessage(message));
+}
+
+function showNewMessage(message){
+    ("<li><div class="uk-align-left"><img src="img/adam.jpg"><span>"+message.getText()+"</span></div></li>")
 }
 
 function onMessageGet(message, conversation){

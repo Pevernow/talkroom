@@ -4,7 +4,7 @@ function init() {
         appId: 'uEG1HlFLyWVsS62pM3mRr36c-MdYXbMMI',
         appKey: '1pXTrH4HODiUJkz6IYgBIyGz',
         // 初始化即时通讯服务时需要指定富媒体消息插件
-        plugins: [TypedMessagesPlugin],
+        plugins: [AV.TypedMessagesPlugin],
     });
     // 需要同时初始化存储服务
     AV.init({

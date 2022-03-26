@@ -75,6 +75,7 @@ function showNewMessage(message){
 
 
 function onMessageGet(message, conversation){
+    
 // 请按自己需求改写
   var file;
   switch (message.type) {

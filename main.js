@@ -57,7 +57,7 @@ function onMessageGet(message, conversation){
   var file;
   switch (message.type) {
     case TextMessage.TYPE:
-      $("#message_ul").append("<li>"+message.getText()+</li>")
+      $("#message_ul").append("<li>"+message.getText()+"</li>")
       console.log('收到文本消息，内容：' + message.getText() + '，ID：' + message.id);
       break;
     case FileMessage.TYPE:

@@ -1,7 +1,6 @@
 function init() {
-    const { Realtime, TextMessage, TypedMessagesPlugin, ImageMessage } = AV;
 
-    const realtime = new Realtime({
+    realtime = new AV.Realtime({
         appId: 'uEG1HlFLyWVsS62pM3mRr36c-MdYXbMMI',
         appKey: '1pXTrH4HODiUJkz6IYgBIyGz',
         // 初始化即时通讯服务时需要指定富媒体消息插件
@@ -26,7 +25,7 @@ function init() {
 }
 
 function login(name){
-    Realtime.createIMClient(name).then(function(user_IMClient) {
+    realtime.createIMClient(name).then(function(user_IMClient) {
         Client = user_IMClient;
         // 成功登录
         Client.getConversation('CONVERSATION_ID').then(function(conversation) {

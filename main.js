@@ -28,7 +28,7 @@ function login(name){
     realtime.createIMClient(name).then(function(user_IMClient) {
         Client = user_IMClient;
         // 成功登录
-        Client.getConversation('5ed057ee5a209ae5a58bbbeff4c28658').then(function(conversation) {
+        Client.getConversation('623e78df4fbbaa8db4bb7c79').then(function(conversation) {
             return conversation.join();
         }).then(function(conversation) {
             gConversation = conversation

@@ -19,7 +19,7 @@ function login(name){
         Client = user_IMClient;
         
         Client.getConversation('623e78df4fbbaa8db4bb7c79').then(function(conversation) {
-            if(conversation==NULL){
+            if(conversation==null){
                 alert("非法访问！拒绝服务！")
                 //关闭页面
                 if(firefox) {

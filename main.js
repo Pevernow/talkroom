@@ -1,5 +1,4 @@
 function init() {
-
     realtime = new AV.Realtime({
         appId: 'uEG1HlFLyWVsS62pM3mRr36c-MdYXbMMI',
         appKey: '1pXTrH4HODiUJkz6IYgBIyGz',
@@ -13,15 +12,6 @@ function init() {
     });
 
     localStorage.setItem('debug', 'LC*');//启用Debug模式
-
-
-    //测试
-    const TestObject = AV.Object.extend('TestObject');
-    const testObject = new TestObject();
-    testObject.set('words', 'Hello world!');
-    testObject.save().then((testObject) => {
-        console.log('保存成功。')
-    })
 }
 
 function login(name){
@@ -48,13 +38,18 @@ function login(name){
         }).then(function(conversation) {
             gConversation = conversation
             console.log('加入成功', conversation.members);
+            $('#input').bind('keydown',function(event){
+                if(event.keyCode == "13") {
+                    sendMessage($("#input").val());
+                }
+            });
             Client.on(Event.MESSAGE, onMessageGet);
             }).catch(console.error.bind(console));
         }).catch(alert);
 }
 
 function sendMessage(message){
-    gConversation.send(new TextMessage('大家好，欢迎来到我们的群聊对话'));
+    gConversation.send(new TextMessage(message));
 }
 
 function onMessageGet(message, conversation){

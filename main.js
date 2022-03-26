@@ -41,6 +41,7 @@ function login(name){
             $('#input').bind('keydown',function(event){
                 if(event.keyCode == "13") {
                     sendMessage($("#input").val());
+                    $("#input").val("");
                 }
             });
             Client.on(Event.MESSAGE, onMessageGet);

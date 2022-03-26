@@ -1,4 +1,20 @@
+isTabShown = true;
 function init() {
+    var hiddenProperty = 'hidden' in document ? 'hidden' :    
+    'webkitHidden' in document ? 'webkitHidden' :    
+    'mozHidden' in document ? 'mozHidden' :    
+    null;
+    var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+    var onVisibilityChange = function(){
+        if (!document[hiddenProperty]) {    
+            isTabShown = false;
+        }else{
+            isTabShown = true;
+            $("title").text("钉钉在线课堂");
+        }
+    }
+    document.addEventListener(visibilityChangeEvent, onVisibilityChange);
+    
     realtime = new AV.Realtime({
         appId: 'uEG1HlFLyWVsS62pM3mRr36c-MdYXbMMI',
         appKey: '1pXTrH4HODiUJkz6IYgBIyGz',
@@ -87,6 +103,9 @@ function onMessageGet(message, conversation){
       // 未来可能添加新的自定义消息类型，新版 SDK 也可能添加新的消息类型。
       // 因此别忘了在默认分支中处理未知类型，例如提示用户升级客户端至最新版本。
       console.warn('收到未知类型消息');
+  }
+  if(isTabShown==false){
+      $("title").text("钉钉在线课堂【★】");
   }
 }
 

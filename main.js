@@ -70,8 +70,9 @@ function sendMessage(message){
 }
 
 function showNewMessage(message){
-    ("<li><div class="uk-align-left"><img src="img/adam.jpg"><span>"+message.getText()+"</span></div></li>")
+    //("<li><div class="uk-align-left"><img src="img/adam.jpg"><span>"+message.getText()+"</span></div></li>")
 }
+
 
 function onMessageGet(message, conversation){
 // 请按自己需求改写

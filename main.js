@@ -25,6 +25,20 @@ function init() {
     })
 }
 
-windows.addEventListener("load", function () {
+function login(name){
+    realtime.createIMClient(name).then(function(user_IMClient) {
+        Client = user_IMClient;
+        // 成功登录
+        Client.getConversation('CONVERSATION_ID').then(function(conversation) {
+              return conversation.join();
+        }).then(function(conversation) {
+              console.log('加入成功', conversation.members);
+              }).catch(console.error.bind(console));
+        }).catch(alert);
+}
+
+window.addEventListener("load", function () {
     init();
+    var name="Test";
+    login(name);
 })

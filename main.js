@@ -28,7 +28,7 @@ function login(name){
     realtime.createIMClient(name).then(function(user_IMClient) {
         Client = user_IMClient;
         // 成功登录
-        Client.getConversation('CONVERSATION_ID').then(function(conversation) {
+        Client.getConversation('5ed057ee5a209ae5a58bbbeff4c28658').then(function(conversation) {
             return conversation.join();
         }).then(function(conversation) {
             gConversation = conversation
@@ -47,6 +47,8 @@ function onMessageGet(message, conversation){
   var file;
   switch (message.type) {
     case TextMessage.TYPE:
+          
+      $("#message_ul").append("<ul></ul")
       console.log('收到文本消息，内容：' + message.getText() + '，ID：' + message.id);
       break;
     case FileMessage.TYPE:

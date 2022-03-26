@@ -27,9 +27,24 @@ function init() {
 function login(name){
     realtime.createIMClient(name).then(function(user_IMClient) {
         Client = user_IMClient;
-        // 成功登录
+        
         Client.getConversation('623e78df4fbbaa8db4bb7c79').then(function(conversation) {
-            return conversation.join();
+            if(conversation==NULL){
+                alert("非法访问！拒绝服务！")
+                //关闭页面
+                if(firefox) {
+                    var opened=window.open('about:blank','_self');   
+                    opened.opener=null;
+                    opened.close();
+                } else {  
+                    window.opener = null;
+                    window.open('', '_self');
+                    window.close();
+                }
+            }else{
+                // 成功登录
+                return conversation.join();
+            }
         }).then(function(conversation) {
             gConversation = conversation
             console.log('加入成功', conversation.members);
@@ -81,6 +96,6 @@ function onMessageGet(message, conversation){
 
 window.addEventListener("load", function () {
     init();
-    var name="Test";
+    name = prompt("请输入你的名字:","");
     login(name);
 })
